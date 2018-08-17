@@ -27,6 +27,9 @@
         <li class="nav-item">
           <a class="nav-link" href="#contacts">Contacts</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#feedback">Feedback</a>
+        </li>
       </ul>
     </nav>
     <div data-spy="scroll" data-target="#top-navbar" data-offset="0" id="main-content">
@@ -64,6 +67,7 @@
             <p>Nukus 360 Project is about our home city - Nukus, which is located in the Republic of Uzbekistan. Nukus is widely known by its State Museum called after I.V.Savitsky, which is also known as &laquo;The Louvre of the Desert&raquo;</p>
           </div>
         </div>
+        <br/>
         <div class="media">
           <img class="mr-3" src="/images/360-vr.jpg" alt="Generic placeholder image" width="300">
           <div class="media-body">
@@ -76,15 +80,43 @@
       <!-- ========== разработчики ========== -->
       <h4 id="contacts">Contacts</h4>
       
-      
+      <ul>
+        <li>Azizbek Kadirov, team leader</li>
+        <li>Alibek Embergenov, designer</li>
+        <li>Alima Orinbaeva, photographer</li>
+        <li>Allaniyaz Nurahimov, coder</li>
+        <li>Baxit Turumbetov, project manager, coder</li>
+      </ul>
         <div class="circle-example">
-          <div class="text">Team</div>
-          <div class="image-wrapper"><img class="image" src="/images/azizbek.jpg" /></div>
+          <div class="text">Our Team</div>
           <div class="image-wrapper"><img class="image" src="/images/allaniyaz.jpg" /></div>
           <div class="image-wrapper"><img class="image" src="/images/alibek.jpg"/></div>
-          <div class="image-wrapper"><img class="image" src="http://i.pravatar.cc/300?img=52"/></div>
-          <div class="image-wrapper"><img class="image" src="http://i.pravatar.cc/300?img=11"/></div>
+          <div class="image-wrapper"><img class="image" src="/images/azizbek.jpg" title="Azizbek Kadirov, lecturer, Nukus branch of TUIT. Likes &laquo;Game of Thrones&raquo;" /></div>
+          <div class="image-wrapper"><img class="image" src="/images/bahit.jpg"/></div>
+          <div class="image-wrapper"><img class="image" src="/images/alima.jpg"/></div>
         </div>
+
+    <!-- ========== обратная связь ========== -->
+      <h4 id="feedback">Feedback</h4>
+      <form action="/feedback" method="post">
+        <div class="form-group">
+          <input type="text" name="from" id="name" placeholder="Bill Gates" class="form-control col-md-4 col-sm-12" />
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" id="email" placeholder="palensheev@mail.ru" class="form-control col-md-4 col-sm-12" />
+        </div>
+        <input type="hidden" name="title" value="message" />
+        <div class="form-group">
+          <textarea name="text" id="message" placeholder="Your message" rows="6" class="form-control col-md-6 col-sm-12"></textarea>
+        </div>
+        <div class="form-group">
+          <img src="/captcha/?<?php echo time();?>" />
+          <input type="text" name="captcha" id="captcha" class="form-control col-md-4" placeholder="Security code" />
+        </div>
+        <div class="form-group">
+        <input type="submit" name="send" class="btn btn-primary" value="Send" />
+        </div>
+      </form>
 
 
     </div>

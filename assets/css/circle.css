@@ -1,6 +1,7 @@
 .circle-example {
   border: 2vmin solid #86CB92;
   height: 60vmin;
+  margin-bottom:200px;
   width: 60vmin;
   border-radius: 50%;
   position: relative;
@@ -28,6 +29,8 @@
   height: 15vmin;
   width: 15vmin;
   border-radius: 50%;
+  border:1px solid red;
+  z-index:999;
   -webkit-transform: rotate(0);
           transform: rotate(0);
   border: 2vmin solid #86CB92;
