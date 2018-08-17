@@ -4,81 +4,94 @@
     <title>Nukus 360 Project - Observe Nukus city virtually</title>
     <meta name=viewport content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/style.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/circle.css" rel="stylesheet" type="text/css">
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
     <style>
-      ul.carousel {
-        display: flex;
-        width: 720px;
-        margin: 20px auto;
-        padding: 0;
-        justify-content: center;
-        overflow: auto;
-      }
-
-      /* MOBILE */
-      @media screen and (max-width: 700px) {
-        ul.carousel {
-          width: 100%;
-          justify-content: flex-start;
-        }
-
-          ul.carousel li:first-child {
-            padding-left: 0;
-          }
-
-          ul.carousel li:last-child {
-            padding-right: 0;
-          }
-      }
-
-        ul.carousel li {
-          list-style: none;
-          margin: 0;
-          padding: 0 10px;
-          display: inline-block;
-        }
-          ul.carousel li a {
-            display: inline-block;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            color: #999;
-            text-decoration: none;
-          }
-            ul.carousel li a.current {
-              color: blue;
-              text-decoration: underline;
-            }
-            ul.carousel li a img {
-              width: 124px;
-              height: 80px;
-            }
-            ul.carousel li a small {
-              display: block;
-            }
+      
     </style>
   </head>
   <body>
-    <h1 align="center">Nukus 360&#176; Project</h1>
 
-    <div id="vrview"></div>
+    <nav id="top-navbar" class="navbar navbar-dark bg-dark sticky-top">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <ul class="nav ">
+        <li class="nav-item">
+          <a class="nav-link" href="#panoramas">Panoramas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contacts">Contacts</a>
+        </li>
+      </ul>
+    </nav>
+    <div data-spy="scroll" data-target="#top-navbar" data-offset="0" id="main-content">
+      
+      <!-- ========== добавляем панораму ========== -->
+      <h4 id="panoramas" align="center">Panoramas</h4>
+      
+      <div id="vrview"></div>
 
-    <ul class="carousel">
-    <?php foreach($panoramas as $pano):?>
-    <?php
-    $thumbnail_name = str_replace(".jpg","_thumbnail.jpg",$pano->path);
-    $preview_name = str_replace(".jpg","_thumbnail.jpg",$pano->path);
-    ?>
+      <ul class="carousel">
+      <?php foreach($panoramas as $pano):?>
+      <?php
+      $thumbnail_name = str_replace(".jpg","_thumbnail.jpg",$pano->path);
+      $preview_name = str_replace(".jpg","_thumbnail.jpg",$pano->path);
+      ?>
+        
+        <li>
+          <a href="#image<?php echo $pano->id;?>">
+            <img src="/assets/panoramas/<?php echo $thumbnail_name;?>">
+            <small><?php echo $pano->title;?></small>
+          </a>
+        </li>
+      <?php endforeach;?>
+        
+      </ul>
       
-      <li>
-        <a href="#image<?php echo $pano->id;?>">
-          <img src="/assets/panoramas/<?php echo $thumbnail_name;?>">
-          <small><?php echo $pano->title;?></small>
-        </a>
-      </li>
-    <?php endforeach;?>
+<div class="container">
+      <!-- ========== информация ========== -->
+      <div class="row">
+        <h4 id="about">About project</h4>
+        <div class="media">
+          <img class="mr-3" src="/images/nukus.jpg" alt="Generic placeholder image" width="300" />
+          <div class="media-body">
+            <h5 class="mt-0">About Nukus</h5>
+            <p>Nukus 360 Project is about our home city - Nukus, which is located in the Republic of Uzbekistan. Nukus is widely known by its State Museum called after I.V.Savitsky, which is also known as &laquo;The Louvre of the Desert&raquo;</p>
+          </div>
+        </div>
+        <div class="media">
+          <img class="mr-3" src="/images/360-vr.jpg" alt="Generic placeholder image" width="300">
+          <div class="media-body">
+            <h5 class="mt-0">360 degree images</h5>
+            <p>A 360-degree photo is a controllable panoramic image that surrounds the original point from which the shot was taken.</p>
+            <p>360-degree photos simulate being in the shoes of a photographer and looking around to the left, right, up and down as desired as well as sometimes zooming. The viewer clicks any point on the image to drag it in the desired direction.</p>
+          </div>
+        </div>
+      </div>
+      <!-- ========== разработчики ========== -->
+      <h4 id="contacts">Contacts</h4>
       
-    </ul>
+      
+        <div class="circle-example">
+          <div class="text">Team</div>
+          <div class="image-wrapper"><img class="image" src="/images/azizbek.jpg" /></div>
+          <div class="image-wrapper"><img class="image" src="/images/allaniyaz.jpg" /></div>
+          <div class="image-wrapper"><img class="image" src="/images/alibek.jpg"/></div>
+          <div class="image-wrapper"><img class="image" src="http://i.pravatar.cc/300?img=52"/></div>
+          <div class="image-wrapper"><img class="image" src="http://i.pravatar.cc/300?img=11"/></div>
+        </div>
+
+
+    </div>
+</div>
+
+
+    
     <script src="/assets/build/vrview.js"></script>
     <!--<script src="/assets/photos.js"></script>-->
     <script>
@@ -159,6 +172,38 @@
     }
 
     window.addEventListener('load', onLoad);
+    </script>
+    <script>
+      $(document).ready(function(){
+        // Add scrollspy to <body>
+        $('body').scrollspy({target: ".navbar", offset: 50});
+
+        // Add smooth scrolling on all links inside the navbar
+        $("#top-navbar a").on('click', function(event) {
+
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 800, function(){
+
+            // Add hash (#) to URL when done scrolling (default click behavior)
+              window.location.hash = hash;
+            });
+
+          } // End if
+
+        });
+      });
     </script>
   </body>
 </html>
