@@ -16,7 +16,7 @@
   <body>
 
     <nav id="top-navbar" class="navbar navbar-dark bg-dark sticky-top">
-      <a class="navbar-brand" href="#">Navbar</a>
+      
       <ul class="nav ">
         <li class="nav-item">
           <a class="nav-link" href="#panoramas">Panoramas</a>
